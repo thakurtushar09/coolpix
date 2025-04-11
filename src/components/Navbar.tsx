@@ -55,8 +55,8 @@ const Navbar = () => {
             </Select>
           </div>
 
-          <Link href={'/about'}><h1 className="text-white font-mono text-xl hover:text-primary transition-colors">About</h1></Link>
-          <Link href={'/contact'}><h1 className="text-white font-mono text-xl hover:text-primary transition-colors">Contact</h1></Link>
+          <Link href={'/About'}><h1 className="text-white font-mono text-xl hover:text-primary transition-colors">About</h1></Link>
+          <Link href={'/Contact'}><h1 className="text-white font-mono text-xl hover:text-primary transition-colors">Contact</h1></Link>
         </div>
       </div>
     </nav>

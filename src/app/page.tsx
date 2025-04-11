@@ -1,4 +1,5 @@
 import { CardSpotlightDemo } from "@/components/CardComponent";
+import ContactUs from "@/components/Contact";
 import { AppleCardsCarouselDemo } from "@/components/Crousel";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -74,7 +75,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-
+      <ContactUs/>
       <Footer/>
     </div>
   );
