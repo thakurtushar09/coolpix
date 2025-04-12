@@ -10,7 +10,7 @@ const Contactdiv = () => {
           Ready to Connect?
         </h1>
         <p className="mt-4 text-gray-300 font-light max-w-full md:max-w-[80%]">
-          Don't wait—let's solve it now! Our experts are on standby to guide
+        Don&apos;t wait&mdash;let&apos;s solve it now! Our experts are on standby to guide
           you. Reach out and get a response within 24 hours.
         </p>
 
@@ -27,10 +27,10 @@ const Contactdiv = () => {
       {/* Right Content - Hidden on mobile */}
       <div className="hidden md:flex w-full md:w-[40%] h-auto md:h-[40%] bg-white rounded-lg p-5 flex-col items-center justify-center">
         <h1 className="text-zinc-800 text-xl font-extrabold text-center">
-          We're Here to Help!
+          We&apos;re Here to Help!
         </h1>
         <p className="mt-4 text-gray-800 font-light text-center">
-          One conversation could solve everything. Let's start now
+          One conversation could solve everything. Let&apos;s start now
         </p>
         <Link href={'/Contact'}>
         <button className="my-5 px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200 cursor-pointer">

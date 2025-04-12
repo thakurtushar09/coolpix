@@ -1,24 +1,27 @@
 "use client";
 import Contactdiv from "@/components/Contactdiv";
+import { CoolButton } from "@/components/CoolButton";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundLines } from "@/components/ui/background-lines";
-import { Button } from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+// Define the service data type
+interface Service {
+  title: string;
+  image: string;
+  points: string[];
+}
 
 // Reusable ServiceCard component
 const ServiceCard = ({
   title,
   image,
   points
-}: {
-  title: string;
-  image: string;
-  points: string[];
-}) => {
+}: Service) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,7 +56,7 @@ const ServiceCard = ({
 };
 
 const Page = () => {
-  const photoEditingServices = [
+  const photoEditingServices: Service[] = [
     {
       title: "Background Change",
       image: "/background-removing.png",
@@ -116,7 +119,7 @@ const Page = () => {
     }
   ];
 
-  const graphicsDesignServices = [
+  const graphicsDesignServices: Service[] = [
     {
       title: "Logo Design",
       image: "/services-logo.png",
@@ -159,7 +162,7 @@ const Page = () => {
     }
   ];
 
-  const fillGrid = (arr: any[]) => {
+  const fillGrid = (arr: Service[]) => {
     const filled = [...arr];
     const remainder = arr.length % 3;
     if (remainder !== 0) {
@@ -204,29 +207,7 @@ const Page = () => {
                 className="mt-6"
               >
                 <Link href="#services-section">
-                  <Button
-                    borderRadius="1.25rem"
-                    className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800 px-8 md:px-10 py-3 text-sm md:text-md font-medium hover:scale-105 transition-transform cursor-pointer"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      Explore Services
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-arrow-right"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Button>
+                  <CoolButton/>
                 </Link>
               </motion.div>
             </motion.div>

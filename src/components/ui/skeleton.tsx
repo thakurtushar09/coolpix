@@ -1,9 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils"; // utility for merging classNames, optional
 
-interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export const Skeleton = ({ className, ...props }: SkeletonProps) => {
+export const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       className={cn(

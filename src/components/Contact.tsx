@@ -68,7 +68,7 @@ const ContactUs = () => {
           </h1>
           <p className="text-gray-600 text-lg">
             Have a project in mind or questions about our services? Reach out to us directly using the contact details below, 
-            or fill out the form and we'll get back to you within 24 hours. Our team is ready to help bring your creative vision to life.
+            or fill out the form and we&apos;ll get back to you within 24 hours. Our team is ready to help bring your creative vision to life.
           </p>
         </div>
 
