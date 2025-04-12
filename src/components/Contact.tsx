@@ -1,8 +1,71 @@
 "use client";
-import React from "react";
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaCheck, FaSpinner } from "react-icons/fa";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // In a real app, you would send the data to your backend:
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+      
+      setIsSuccess(true);
+      setFormData({ name: "", phone: "", email: "", message: "" });
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen w-[90%] rounded-lg mx-auto bg-[#fdfcea] flex items-center justify-center p-4 sm:p-12 mt-[10%]">
       <div className="max-w-6xl w-full flex flex-col lg:flex-row gap-12 lg:gap-24">
@@ -12,53 +75,99 @@ const ContactUs = () => {
             Get in touch
           </h1>
           <p className="text-gray-600 text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Have a project in mind or questions about our services? Reach out to us directly using the contact details below, 
+            or fill out the form and we'll get back to you within 24 hours. Our team is ready to help bring your creative vision to life.
           </p>
         </div>
 
         {/* Right Content - Form */}
         <div className="lg:w-1/2">
-          <div className="border-b-4 border-[#f3f2cf] pb-8 mb-8">
+          <form onSubmit={handleSubmit} className="border-b-4 border-[#f3f2cf] pb-8 mb-8">
             <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d]"
-              />
-              <input
-                type="tel"
-                placeholder="Contact Number"
-                className="w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d]"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d]"
-              />
-              <textarea
-                placeholder="Message"
-                rows={5}
-                className="w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d]"
-              ></textarea>
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d] ${errors.name ? "border border-red-500" : ""}`}
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
+              
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Contact Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d] ${errors.phone ? "border border-red-500" : ""}`}
+                />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
+              
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d] ${errors.email ? "border border-red-500" : ""}`}
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <textarea
+                  name="message"
+                  placeholder="Message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={`w-full bg-[#f3f2cf] rounded-lg p-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b0ab4d] ${errors.message ? "border border-red-500" : ""}`}
+                ></textarea>
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+              </div>
             </div>
             
-            <button className="mt-6 bg-[#b0ab4d] text-white py-3 px-8 rounded-lg hover:bg-[#9c9842] transition-colors duration-300">
-              Send Message
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`mt-6 bg-[#b0ab4d] text-white py-3 px-8 rounded-lg hover:bg-[#9c9842] transition-colors duration-300 flex items-center justify-center gap-2 ${
+                isSubmitting ? "opacity-75 cursor-not-allowed" : ""
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <FaSpinner className="animate-spin" />
+                  Sending...
+                </>
+              ) : isSuccess ? (
+                <>
+                  <FaCheck />
+                  Sent Successfully!
+                </>
+              ) : (
+                "Send Message"
+              )}
             </button>
-          </div>
+          </form>
 
           {/* Social Icons */}
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842]">
+            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842] transition-colors">
               <FaFacebook size={24} />
             </a>
-            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842]">
+            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842] transition-colors">
               <FaInstagram size={24} />
             </a>
-            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842]">
+            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842] transition-colors">
               <FaTwitter size={24} />
             </a>
-            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842]">
+            <a href="#" className="text-[#b0ab4d] hover:text-[#9c9842] transition-colors">
               <FaLinkedin size={24} />
             </a>
           </div>

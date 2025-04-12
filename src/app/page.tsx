@@ -1,82 +1,114 @@
-import { CardSpotlightDemo } from "@/components/CardComponent";
-import ContactUs from "@/components/Contact";
+"use client";
+import { Camera, Palette, Laptop } from "lucide-react";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { AppleCardsCarouselDemo } from "@/components/Crousel";
+import ContactUs from "@/components/Contact";
+import Contactdiv from "@/components/Contactdiv";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { Button } from "@/components/ui/moving-border";
-import { WobbleCard } from "@/components/ui/wobble-card";
-import Image from "next/image";
+
+// Reusable Card Component
+interface CardSpotlightDemoProps {
+  icon: React.ComponentType<{ size: number; className?: string }>;
+  title: string;
+  description: string;
+  className?: string;
+}
+
+function CardSpotlightDemo({ icon: Icon, title, description, className }: CardSpotlightDemoProps) {
+  return (
+    <CardSpotlight className={`h-96 w-full flex flex-col items-center justify-center p-8 gap-6 ${className}`}>
+      <div className="p-4 rounded-full bg-primary/10">
+        <Icon size={48} className="text-primary" />
+      </div>
+      <h3 className="text-2xl font-bold text-center">{title}</h3>
+      <p className="text-muted-foreground text-center">{description}</p>
+    </CardSpotlight>
+  );
+}
 
 export default function Home() {
-  return (
-    <div className="p-5 min-h-screen">
-      <BackgroundBeamsWithCollision className="flex flex-col">
-        {/* Navbar placed at the top inside the background UI */}
-        <div className="w-full fixed top-4 left-0 z-50">
-          <Navbar />
-        </div>
+  const services = [
+    {
+      icon: Camera,
+      title: "Professional Photo Editing",
+      description: "Transform your images with expert editing for flawless, publication-ready results."
+    },
+    {
+      icon: Palette,
+      title: "Health & Beauty Retouching",
+      description: "Specialized editing that enhances while maintaining natural textures and authenticity."
+    },
+    {
+      icon: Laptop,
+      title: "E-commerce Solutions",
+      description: "Optimized product images that increase conversions and showcase your items perfectly."
+    }
+  ];
 
-        {/* Spacer so content doesn't go under fixed navbar */}
-        <div className="pt-20">
-          <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
-            Where Fabric Dreams Become{" "}
+  return (
+    <div className="min-h-screen overflow-x-hidden">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <BackgroundBeamsWithCollision className="flex flex-col items-center justify-center min-h-[80vh] sm:min-h-[90vh]">
+        <div className="flex flex-col items-center justify-center text-center px-4 pt-32 pb-16 sm:pt-40 sm:pb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black dark:text-white font-sans tracking-tight">
+            Where Editing Dreams Become{" "}
             <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
-              <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
+              <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-2 sm:py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
                 <span>Flawless Reality.</span>
               </div>
-              <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
+              <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-2 sm:py-4">
                 <span>Flawless Reality.</span>
               </div>
             </div>
           </h2>
-        </div>
 
-        <div>
-          <Button
-            borderRadius="1.75rem"
-            className="bg-transparent dark:bg-transparent font-bold text-black dark:text-white border-neutral-200 dark:border-slate-800"
-          >
-            Browse Services
-          </Button>
-
-          <button className="mx-4 px-12 py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
-            Contact us
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 sm:mt-12">
+            <Button
+              borderRadius="1.75rem"
+              className="bg-transparent dark:bg-transparent font-bold text-black dark:text-white border-neutral-200 dark:border-slate-800 px-6 py-3 sm:px-8 sm:py-4"
+            >
+              Browse Services
+            </Button>
+            <button className="px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-all duration-200 text-sm sm:text-base">
+              Contact us
+            </button>
+          </div>
         </div>
       </BackgroundBeamsWithCollision>
 
-      <div className="w-[90%] mx-auto bg-gray-400 mt-10 rounded-lg min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[65vh] flex items-center justify-center gap-2 px-4">
-        <CardSpotlightDemo />
-        <CardSpotlightDemo />
-        <CardSpotlightDemo />
-      </div>
-
-      <div className="mt-10">
-        <AppleCardsCarouselDemo/>
-      </div>
-
-      <div className="mt-10 min-h-[40vh] w-[94%] p-10 mx-auto bg-[#1C1D29] rounded-lg flex">
-        <div className="max-w-[50%]">
-          <h1 className="text-2xl font-sans relative inline-block pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-12 after:h-1 after:bg-orange-500 after:rounded">
-            Ready to Connect?
-          </h1>
-          <p className="mt-4 text-gray-300 font-light max-w-[50%]">
-            Don't wait—let's solve it now! Our experts are on standby to guide
-            you. Reach out and get a response within 24 hours.
-          </p>
-        </div>
-
-        <div className="w-[40%] h-[40%]  bg-white rounded-lg p-5">
-            <h1 className="text-zinc-800 text-xl font-extrabold">We’re Here to Help!</h1>
-            <p className="mt-4 text-gray-800 font-light max-w-[90%]">One conversation could solve everything. Let’s start now</p>
-            <button className="my-5 px-12 py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
-            Contact us
-          </button>
+      {/* Services Cards Section */}
+      <div className="w-full max-w-7xl mx-auto bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center p-4 sm:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+          {services.map((service, index) => (
+            <div key={index} className="flex justify-center">
+              <CardSpotlightDemo
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                className="w-full max-w-[350px] md:max-w-none"
+              />
+            </div>
+          ))}
         </div>
       </div>
-      <ContactUs/>
-      <Footer/>
+
+      {/* Carousel Section */}
+      <div className="mt-10 sm:mt-16 px-4 sm:px-6">
+        <AppleCardsCarouselDemo />
+      </div>
+
+      {/* Contact Section */}
+      <div className="mt-10 sm:mt-16">
+        <Contactdiv />
+      </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

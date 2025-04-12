@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { CheckCircle } from "lucide-react";
 
 export function AppleCardsCarouselDemo() {
   const cards = data.map((card, index) => (
@@ -9,83 +10,117 @@ export function AppleCardsCarouselDemo() {
   ));
 
   return (
-    <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-        Our Services
+    <div className="w-full h-full py-20 bg-white dark:bg-gray-900">
+      <h2 className="max-w-7xl pl-4 mx-auto text-3xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+        Our Professional Services
       </h2>
       <Carousel items={cards} />
     </div>
   );
 }
 
-const DummyContent = () => {
+const ServiceContent = ({ points }: { points: string[] }) => {
   return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="/carousel-image.avif"
-              alt="Apple product showcase"
-              width={500}
-              height={500}
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-              priority={index === 0}
-            />
-          </div>
-        );
-      })}
-    </>
+    <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4 h-full">
+      <ul className="space-y-4 text-neutral-600 dark:text-neutral-300 text-base md:text-lg font-sans">
+        {points.map((point, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <CheckCircle className="flex-shrink-0 mt-1 text-blue-500 dark:text-blue-400" size={18} />
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 const data = [
   {
-    category: "Artificial Intelligence",
-    title: "You can do more with AI.",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Photo Editing",
+    title: "Background Change",
+    src: "/background-change.jpg",
+    content: <ServiceContent points={[
+      "Complete background removal",
+      "Custom backdrop integration",
+      "Studio-quality white backgrounds",
+      "E-commerce ready outputs"
+    ]} />,
   },
   {
-    category: "Productivity",
-    title: "Enhance your productivity.",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Photo Editing",
+    title: "Model Retouching",
+    src: "/Retouching.png",
+    content: <ServiceContent points={[
+      "Skin smoothing & blemish removal",
+      "Product enhancement",
+      "Natural texture preservation",
+      "Non-destructive workflow"
+    ]} />,
   },
   {
-    category: "Product",
-    title: "Launching the new Apple Vision Pro.",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Photo Editing",
+    title: "Ghost Editing",
+    src: "/ghost-editing.png",
+    content: <ServiceContent points={[
+      "Invisible mannequin removal",
+      "Garment shaping & draping",
+      "Clothing adjustments",
+      "Fashion catalog ready"
+    ]} />,
   },
   {
-    category: "Product",
-    title: "Maps for your iPhone 15 Pro Max.",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Photo Editing",
+    title: "Color Correction",
+    src: "/color-correction.jpg",
+    content: <ServiceContent points={[
+      "Precise color matching",
+      "Fabric color adjustments",
+      "Consistent color across images",
+      "Pantone reference accuracy"
+    ]} />,
   },
   {
-    category: "iOS",
-    title: "Photography just got better.",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Photo Editing",
+    title: "Shadow Creation",
+    src: "/shadow-creation.jpg",
+    content: <ServiceContent points={[
+      "Natural drop shadows",
+      "Reflection creation",
+      "3D shadow effects",
+      "Product presentation ready"
+    ]} />,
   },
   {
-    category: "Hiring",
-    title: "Hiring for a Staff Software Engineer",
-    src: "/carousel-image.avif",
-    content: <DummyContent />,
+    category: "Design Services",
+    title: "Logo Design",
+    src: "/logo.png",
+    content: <ServiceContent points={[
+      "Unique brand identity creation",
+      "Multiple concept options",
+      "Vector file formats",
+      "Full copyright ownership"
+    ]} />,
+  },
+  {
+    category: "Design Services",
+    title: "Web Design",
+    src: "/web-design.jpg",
+    content: <ServiceContent points={[
+      "Responsive website design",
+      "UI/UX optimized layouts",
+      "Mobile-first approach",
+      "SEO-friendly structure"
+    ]} />,
+  },
+  {
+    category: "Design Services",
+    title: "Brand Identity",
+    src: "/brand-design.jpg",
+    content: <ServiceContent points={[
+      "Complete brand guidelines",
+      "Color palette selection",
+      "Typography systems",
+      "Marketing collateral"
+    ]} />,
   },
 ];
