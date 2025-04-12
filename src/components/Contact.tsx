@@ -46,15 +46,7 @@ const ContactUs = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // In a real app, you would send the data to your backend:
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
       
       setIsSuccess(true);
       setFormData({ name: "", phone: "", email: "", message: "" });

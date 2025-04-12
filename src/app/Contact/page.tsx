@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Cover } from "@/components/ui/cover";
 import { CheckCircle, Mail, Phone } from "lucide-react";
-import React from "react";
 
 const page = () => {
   return (

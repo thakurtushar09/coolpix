@@ -1,15 +1,13 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import { BackgroundLines } from "@/components/ui/background-lines";
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/moving-border";
-import Link from "next/link";
-import Image from "next/image";
-import { CheckCircle } from "lucide-react";
-import ContactUs from "@/components/Contact";
 import Contactdiv from "@/components/Contactdiv";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { BackgroundLines } from "@/components/ui/background-lines";
+import { Button } from "@/components/ui/moving-border";
+import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // Reusable ServiceCard component
 const ServiceCard = ({

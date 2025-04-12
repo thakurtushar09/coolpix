@@ -1,13 +1,12 @@
 "use client";
-import { Camera, Palette, Laptop } from "lucide-react";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { AppleCardsCarouselDemo } from "@/components/Crousel";
-import ContactUs from "@/components/Contact";
 import Contactdiv from "@/components/Contactdiv";
+import { AppleCardsCarouselDemo } from "@/components/Crousel";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { Button } from "@/components/ui/moving-border";
+import { Camera, Laptop, Palette } from "lucide-react";
 import Link from "next/link";
 
 // Reusable Card Component

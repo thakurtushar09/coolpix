@@ -1,10 +1,10 @@
 "use client";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { Eye, Target, HeartHandshake, ArrowBigRight } from "lucide-react";
 import Contactdiv from "@/components/Contactdiv";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { ArrowBigRight, Eye, HeartHandshake, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
