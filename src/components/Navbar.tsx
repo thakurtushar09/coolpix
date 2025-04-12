@@ -19,13 +19,15 @@ const Navbar = () => {
       <nav className="m-2  p-2 left-0 right-0 z-50 bg-transparent border rounded-lg border-gray-700">
         <div className="w-[90%] mx-auto p-4 md:p-6 flex items-center justify-between">
           <div className="text-zinc-800">
+            <Link href={'/'}>
             <Image 
               src={"/logo.png"} 
               alt="logo-image" 
-              height={500} 
-              width={500} 
+              height={300} 
+              width={300} 
               className="h-10 w-auto md:h-12" 
             />
+            </Link>
           </div>
           
           {/* Desktop Navigation */}

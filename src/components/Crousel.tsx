@@ -38,7 +38,7 @@ const data = [
   {
     category: "Photo Editing",
     title: "Background Change",
-    src: "/background-change.jpg",
+    src: "/bg-remove-long.jpg",
     content: <ServiceContent points={[
       "Complete background removal",
       "Custom backdrop integration",
@@ -49,7 +49,7 @@ const data = [
   {
     category: "Photo Editing",
     title: "Model Retouching",
-    src: "/Retouching.png",
+    src: "/retouching-long.jpg",
     content: <ServiceContent points={[
       "Skin smoothing & blemish removal",
       "Product enhancement",
@@ -60,7 +60,7 @@ const data = [
   {
     category: "Photo Editing",
     title: "Ghost Editing",
-    src: "/ghost-editing.png",
+    src: "/ghost-long.jpg",
     content: <ServiceContent points={[
       "Invisible mannequin removal",
       "Garment shaping & draping",
@@ -82,7 +82,7 @@ const data = [
   {
     category: "Photo Editing",
     title: "Shadow Creation",
-    src: "/shadow-creation.jpg",
+    src: "/shadow-long.jpg",
     content: <ServiceContent points={[
       "Natural drop shadows",
       "Reflection creation",
@@ -90,21 +90,11 @@ const data = [
       "Product presentation ready"
     ]} />,
   },
-  {
-    category: "Design Services",
-    title: "Logo Design",
-    src: "/logo.png",
-    content: <ServiceContent points={[
-      "Unique brand identity creation",
-      "Multiple concept options",
-      "Vector file formats",
-      "Full copyright ownership"
-    ]} />,
-  },
+  
   {
     category: "Design Services",
     title: "Web Design",
-    src: "/web-design.jpg",
+    src: "/web-long.jpg",
     content: <ServiceContent points={[
       "Responsive website design",
       "UI/UX optimized layouts",

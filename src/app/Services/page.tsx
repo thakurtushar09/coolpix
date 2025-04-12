@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/moving-border";
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircle, LayoutTemplate, Palette, Code, PenTool, MonitorSmartphone } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import ContactUs from "@/components/Contact";
 import Contactdiv from "@/components/Contactdiv";
 import Footer from "@/components/Footer";
 
 // Reusable ServiceCard component
-const ServiceCard = ({ 
-  title, 
-  image, 
-  points 
-}: { 
-  title: string; 
-  image: string; 
-  points: string[] 
+const ServiceCard = ({
+  title,
+  image,
+  points
+}: {
+  title: string;
+  image: string;
+  points: string[];
 }) => {
   return (
     <motion.div
@@ -54,11 +54,11 @@ const ServiceCard = ({
   );
 };
 
-const page = () => {
+const Page = () => {
   const photoEditingServices = [
     {
       title: "Background Change",
-      image: "/background-change.jpg",
+      image: "/background-removing.png",
       points: [
         "Complete background removal",
         "Custom backdrop integration",
@@ -88,7 +88,7 @@ const page = () => {
     },
     {
       title: "Shadow Creation",
-      image: "/shadow-creation.jpg",
+      image: "/shadow-creation.png",
       points: [
         "Natural drop shadows",
         "Reflection effects",
@@ -108,7 +108,7 @@ const page = () => {
     },
     {
       title: "Color Correction",
-      image: "/color-correction.jpg",
+      image: "/color-correction.png",
       points: [
         "Precise color matching",
         "Fabric color adjustments",
@@ -121,7 +121,7 @@ const page = () => {
   const graphicsDesignServices = [
     {
       title: "Logo Design",
-      image: "/logo t[1].png",
+      image: "/services-logo.png",
       points: [
         "Unique brand identity creation",
         "Multiple concept options",
@@ -131,7 +131,7 @@ const page = () => {
     },
     {
       title: "Web Design",
-      image: "/web-design.jpg",
+      image: "/services-web.png",
       points: [
         "Responsive website design",
         "UI/UX optimized layouts",
@@ -141,7 +141,7 @@ const page = () => {
     },
     {
       title: "Brand Identity",
-      image: "/brand-design.jpg",
+      image: "/services-identity.png",
       points: [
         "Complete brand guidelines",
         "Color palette selection",
@@ -151,7 +151,7 @@ const page = () => {
     },
     {
       title: "Social Media Graphics",
-      image: "/social-media-graphics.jpg",
+      image: "/services-socialGraphics.png",
       points: [
         "Platform-optimized designs",
         "Post templates creation",
@@ -161,13 +161,24 @@ const page = () => {
     }
   ];
 
+  const fillGrid = (arr: any[]) => {
+    const filled = [...arr];
+    const remainder = arr.length % 3;
+    if (remainder !== 0) {
+      filled.push({
+        title: "Coming Soon",
+        image: "/coming-soon.png", // You must have this image in your public folder
+        points: ["Exciting services in progress"]
+      });
+    }
+    return filled;
+  };
+
   return (
     <div className="flex flex-col">
-      {/* Animated Hero Section */}
       <Navbar />
-      <div className="min-h-screen relative overflow-hidden">
+      <div className="min-h-[60vh] lg:min-h-screen relative overflow-hidden">
         <BackgroundLines className="absolute inset-0 flex flex-col">
-          {/* Centered content */}
           <div className="flex-1 flex flex-col items-center justify-center pt-20 pb-10 px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,14 +199,13 @@ const page = () => {
                 Professional creative services from photo editing to complete graphic design solutions. We transform your visuals into powerful brand assets.
               </motion.p>
 
-              {/* Explore Button with smooth scroll */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="mt-6"
               >
-                <Link href="#services-section" scroll={false}>
+                <Link href="#services-section">
                   <Button
                     borderRadius="1.25rem"
                     className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800 px-8 md:px-10 py-3 text-sm md:text-md font-medium hover:scale-105 transition-transform cursor-pointer"
@@ -238,7 +248,7 @@ const page = () => {
           >
             Our Complete Service Offerings
           </motion.h1>
-          
+
           {/* Photo Editing Services */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -251,7 +261,7 @@ const page = () => {
               Professional Photo Editing
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {photoEditingServices.map((service, index) => (
+              {fillGrid(photoEditingServices).map((service, index) => (
                 <ServiceCard
                   key={`photo-${index}`}
                   title={service.title}
@@ -261,7 +271,7 @@ const page = () => {
               ))}
             </div>
           </motion.div>
-          
+
           {/* Graphics & Web Design Services */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -272,8 +282,8 @@ const page = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 pb-2 border-b border-gray-200">
               Graphics & Web Design
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {graphicsDesignServices.map((service, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {fillGrid(graphicsDesignServices).map((service, index) => (
                 <ServiceCard
                   key={`design-${index}`}
                   title={service.title}
@@ -286,11 +296,10 @@ const page = () => {
         </div>
       </section>
 
-      <Contactdiv/>
-
-      <Footer/>
+      <Contactdiv />
+      <Footer />
     </div>
   );
 };
 
-export default page;
+export default Page;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Contactdiv = () => {
@@ -15,9 +16,11 @@ const Contactdiv = () => {
 
         {/* Mobile-only Contact Button */}
         <div className="mt-8 md:hidden">
-          <button className="px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
+          <Link href={'Contact'}>
+          <button className="px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200 cursor-pointer">
             Contact us
           </button>
+          </Link>
         </div>
       </div>
 
@@ -29,9 +32,11 @@ const Contactdiv = () => {
         <p className="mt-4 text-gray-800 font-light text-center">
           One conversation could solve everything. Let's start now
         </p>
-        <button className="my-5 px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
+        <Link href={'/Contact'}>
+        <button className="my-5 px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200 cursor-pointer">
           Contact us
         </button>
+        </Link>
       </div>
     </div>
   );

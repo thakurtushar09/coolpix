@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { Button } from "@/components/ui/moving-border";
+import Link from "next/link";
 
 // Reusable Card Component
 interface CardSpotlightDemoProps {
@@ -68,15 +69,19 @@ export default function Home() {
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 sm:mt-12">
+            <Link href={'/Services'}>
             <Button
               borderRadius="1.75rem"
-              className="bg-transparent dark:bg-transparent font-bold text-black dark:text-white border-neutral-200 dark:border-slate-800 px-6 py-3 sm:px-8 sm:py-4"
+              className="bg-transparent dark:bg-transparent font-bold text-black dark:text-white border-neutral-200 dark:border-slate-800 px-6 py-3 sm:px-8 sm:py-4 cursor-pointer"
             >
               Browse Services
             </Button>
-            <button className="px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-all duration-200 text-sm sm:text-base">
+            </Link>
+            <Link href={'/Contact'}>
+            <button className="px-8 py-3 sm:px-12 sm:py-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-all duration-200 text-sm sm:text-base cursor-pointer">
               Contact us
             </button>
+            </Link>
           </div>
         </div>
       </BackgroundBeamsWithCollision>
