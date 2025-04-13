@@ -12,7 +12,7 @@ export function CoolButton({
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       className={cn(
-        "relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-blue-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:shadow-lg focus:outline-none",
+        "relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-blue-600 px-6 py-3 text-white shadow-md transition-all duration-300 hover:shadow-lg focus:outline-none cursor-pointer",
         className
       )}
     >
