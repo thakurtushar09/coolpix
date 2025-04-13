@@ -109,7 +109,7 @@ const Navbar = () => {
 
         <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
           <div className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Your Company
+            © {new Date().getFullYear()} Coolpix
           </div>
         </div>
       </div>
